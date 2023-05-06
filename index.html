@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flipbook-vue@0.10.1/dist/flipbook.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .flipbook {
+        width: 96vw;
+        height: 96vh;
+    }
+    body {
+        background-image: url(background.jpg);
+    }
+</style>
+<body>
+    <div id="app">
+        <flipbook class="flipbook" :pages="pages" v-slot="flipbook">
+        </flipbook>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            pages: [
+            null,
+            'https://ts1.github.io/flipbook-vue/images/1.jpg',
+            'https://ts1.github.io/flipbook-vue/images/2.jpg',
+            'https://ts1.github.io/flipbook-vue/images/3.jpg',
+            'https://ts1.github.io/flipbook-vue/images/4.jpg',
+            'https://ts1.github.io/flipbook-vue/images/5.jpg',
+            'https://ts1.github.io/flipbook-vue/images/6.jpg'
+            ],
+            pages2 :[
+            null,
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B1%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B2%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B3%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B4%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B5%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B6%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B7%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B8%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B9%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B10%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B11%5D%20640X960%20',
+            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B12%5D%20640X960%20',
+            ]
+        }
+    });
+</script>
