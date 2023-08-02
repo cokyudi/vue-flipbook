@@ -29,9 +29,16 @@
     }
 </style>
 <body>
+    <script>
+        function play() {
+          var audio = document.getElementById("audio");
+          audio.play();
+        }
+      </script>
     <div id="app">
-        <flipbook class="flipbook" :pages="pages" v-slot="flipbook" :gloss="0">
+        <flipbook class="flipbook" :pages="pages" v-slot="flipbook" :gloss="0" onclick="play()">
         </flipbook>
+        <audio id="audio" src="./Flashbook/pageturn.mp3"></audio>
     </div>
 </body>
 </html>
