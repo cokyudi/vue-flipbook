@@ -7,7 +7,9 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flipbook-vue@0.10.1/dist/flipbook.min.js"></script>
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>SUSU - FLASHBOOK</title>
+    <link rel="icon" type="image/x-icon" href="./Flashbook/Untitled-4.jpg">
 </head>
 <style>
     .flipbook {
@@ -15,7 +17,9 @@
         height: 96vh;
     }
     body {
-        background-color: darkslategrey;
+        background-image: url('./Flashbook/IMG_7731.PNG');
+        background-color: grey;
+        background-size: 165px 230px;
     }
 </style>
 <body>
@@ -31,28 +35,22 @@
         data: {
             pages: [
             null,
-            './images/cover.jpg',
-            './images/1.jpg',
-            './images/2.jpg',
-            './images/3.jpg',
-            './images/4.jpg',
-            './images/5.jpg'
+            './Flashbook/IMG_7729.JPG',
+            './Flashbook/IMG_7715.JPG',
+            './Flashbook/IMG_7716.JPG',
+            './Flashbook/IMG_7717.JPG',
+            './Flashbook/IMG_7718.JPG',
+            './Flashbook/IMG_7719.JPG',
+            './Flashbook/IMG_7721.JPG',
+            './Flashbook/IMG_7722.JPG',
+            './Flashbook/IMG_7723.JPG',
+            './Flashbook/IMG_7724.JPG',
+            './Flashbook/IMG_7729-2.JPG',
             ],
-            pages2 :[
-            null,
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B1%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B2%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B3%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B4%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B5%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B6%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B7%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B8%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B9%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B10%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B11%5D%20640X960%20',
-            'https://placehold.jp/3d4070/ffffff/640x960.png?text=%5B12%5D%20640X960%20',
-            ]
         }
     });
+
+    $('div').bind('contextmenu', function(e) {
+        return false;
+    }); 
 </script>
