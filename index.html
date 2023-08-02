@@ -8,27 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flipbook-vue@0.10.1/dist/flipbook.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script>
-        function absorbEvent_(event) {
-          var e = event || window.event;
-          e.preventDefault && e.preventDefault();
-          e.stopPropagation && e.stopPropagation();
-          e.cancelBubble = true;
-          e.returnValue = false;
-          return false;
-        }
-    
-        function preventLongPressMenu(node) {
-          node.ontouchstart = absorbEvent_;
-          node.ontouchmove = absorbEvent_;
-          node.ontouchend = absorbEvent_;
-          node.ontouchcancel = absorbEvent_;
-        }
-    
-        function init() {
-          preventLongPressMenu($('body div'));
-        }
-    </script>
     
     <title>SUSU - FLASHBOOK</title>
     <link rel="icon" type="image/x-icon" href="./Flashbook/Untitled-4.jpg">
@@ -44,7 +23,7 @@
         background-size: 165px 230px;
     }
 </style>
-<body onload="init()">
+<body>
     <div id="app">
         <flipbook class="flipbook" :pages="pages" v-slot="flipbook">
         </flipbook>
@@ -75,4 +54,24 @@
     $('div').bind('contextmenu', function(e) {
         return false;
     }); 
+
+    $.fn.extend({
+    disableSelection: function() {
+            this.each(function() {
+                this.onselectstart = function() {
+                    return false;
+                };
+                this.unselectable = "on";
+                $(this).css('-moz-user-select', 'none');
+                $(this).css('-webkit-user-select', 'none');
+            });
+            return this;
+        }
+    });
+
+    $(document).ready(function(){
+
+        $('div').disableSelection();
+
+    });
 </script>
