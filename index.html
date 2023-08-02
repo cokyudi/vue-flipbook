@@ -16,6 +16,11 @@
     .flipbook {
         width: 96vw;
         height: 96vh;
+        -webkit-touch-callout: none; /* Safari Touch */
+        -webkit-user-select: none;   /* Webkit */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Edge*/
+        user-select: none;       /* Future-proof*/
     }
     body {
         background-image: url('./Flashbook/IMG_7731.PNG');
@@ -53,25 +58,5 @@
 
     $('div').bind('contextmenu', function(e) {
         return false;
-    }); 
-
-    $.fn.extend({
-    disableSelection: function() {
-            this.each(function() {
-                this.onselectstart = function() {
-                    return false;
-                };
-                this.unselectable = "on";
-                $(this).css('-moz-user-select', 'none');
-                $(this).css('-webkit-user-select', 'none');
-            });
-            return this;
-        }
-    });
-
-    $(document).ready(function(){
-
-        $('div').disableSelection();
-
     });
 </script>
