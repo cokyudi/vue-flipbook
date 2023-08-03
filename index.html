@@ -30,7 +30,7 @@
 </style>
 <body>
     <div id="app">
-        <flipbook class="flipbook" :pages="pages" v-slot="flipbook" :gloss="0" onclick="play()">
+        <flipbook id="bookflip" class="flipbook" :pages="pages" v-slot="flipbook" :gloss="0" onclick="play()">
         </flipbook>
         <audio id="audio" src="./Flashbook/pageturn.mp3"></audio>
     </div>
@@ -61,7 +61,7 @@
     var touchendX = 0;
     var touchendY = 0;
 
-    var gesuredZone = document.getElementById('app');
+    var gesuredZone = document.getElementById('bookflip');
 
     gesuredZone.addEventListener('touchstart', function(event) {
         touchstartX = event.screenX;
