@@ -27,8 +27,14 @@ const Sheet = forwardRef<
   HTMLDivElement,
   { page: Page; index: number }
 >(function Sheet({ page, index }, ref) {
+  // Stiff covers (first/last), soft bending paper for interior pages.
+  const isCover = index === 0 || index === PAGES.length - 1;
   return (
-    <div ref={ref} className="flip-page" data-density="hard">
+    <div
+      ref={ref}
+      className="flip-page"
+      data-density={isCover ? "hard" : "soft"}
+    >
       <Image
         src={page.src}
         alt={page.alt}
@@ -94,7 +100,7 @@ export default function FlipBook() {
           maxHeight={877}
           showCover
           drawShadow
-          flippingTime={700}
+          flippingTime={1000}
           maxShadowOpacity={0.5}
           usePortrait
           mobileScrollSupport
