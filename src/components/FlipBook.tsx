@@ -10,12 +10,19 @@ import {
 } from "react";
 import HTMLFlipBook from "react-pageflip";
 
-const PAGES = Array.from({ length: 11 }, (_, i) => {
-  const n = String(i + 1).padStart(2, "0");
-  return { src: `/pages/${n}.jpg`, alt: `SUSU flash — page ${i + 1}` };
-});
+type Page = { src: string | null; alt: string };
 
-type Page = (typeof PAGES)[number];
+// showCover needs an even total so both covers stand alone and interior
+// pages pair up. 11 art sheets + 1 blank flyleaf = 12.
+const PAGES: Page[] = [
+  { src: "/pages/01.jpg", alt: "SUSU flash — cover" },
+  { src: null, alt: "" }, // inside-front flyleaf
+  ...["02", "03", "04", "05", "06", "07", "08", "09", "10"].map((n) => ({
+    src: `/pages/${n}.jpg`,
+    alt: `SUSU flash — sheet ${n}`,
+  })),
+  { src: "/pages/11.jpg", alt: "SUSU flash — back cover" },
+];
 
 type FlipApi = {
   flipNext: () => void;
@@ -35,15 +42,17 @@ const Sheet = forwardRef<
       className="flip-page"
       data-density={isCover ? "hard" : "soft"}
     >
-      <Image
-        src={page.src}
-        alt={page.alt}
-        fill
-        priority={index < 2}
-        draggable={false}
-        sizes="(max-width: 768px) 90vw, 45vw"
-        className="object-cover select-none pointer-events-none"
-      />
+      {page.src && (
+        <Image
+          src={page.src}
+          alt={page.alt}
+          fill
+          priority={index < 3}
+          draggable={false}
+          sizes="(max-width: 768px) 90vw, 45vw"
+          className="object-cover select-none pointer-events-none"
+        />
+      )}
     </div>
   );
 });
