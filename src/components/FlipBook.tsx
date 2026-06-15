@@ -10,19 +10,12 @@ import {
 } from "react";
 import HTMLFlipBook from "react-pageflip";
 
-type Page = { src: string | null; alt: string };
+type Page = { src: string; alt: string };
 
-// showCover needs an even total so both covers stand alone and interior
-// pages pair up. 11 art sheets + 1 blank flyleaf = 12.
-const PAGES: Page[] = [
-  { src: "/pages/01.jpg", alt: "SUSU flash — cover" },
-  { src: null, alt: "" }, // inside-front flyleaf
-  ...["02", "03", "04", "05", "06", "07", "08", "09", "10"].map((n) => ({
-    src: `/pages/${n}.jpg`,
-    alt: `SUSU flash — sheet ${n}`,
-  })),
-  { src: "/pages/11.jpg", alt: "SUSU flash — back cover" },
-];
+const PAGES: Page[] = Array.from({ length: 11 }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  return { src: `/pages/${n}.jpg`, alt: `SUSU flash — page ${i + 1}` };
+});
 
 type FlipApi = {
   flipNext: () => void;
@@ -34,25 +27,24 @@ const Sheet = forwardRef<
   HTMLDivElement,
   { page: Page; index: number }
 >(function Sheet({ page, index }, ref) {
-  // Stiff covers (first/last), soft bending paper for interior pages.
-  const isCover = index === 0 || index === PAGES.length - 1;
+  // Only the front cover is rigid; every other page bends like real paper.
+  // (No blank flyleaf, so single-page/portrait mode has no empty page.)
+  const isCover = index === 0;
   return (
     <div
       ref={ref}
       className="flip-page"
       data-density={isCover ? "hard" : "soft"}
     >
-      {page.src && (
-        <Image
-          src={page.src}
-          alt={page.alt}
-          fill
-          priority={index < 3}
-          draggable={false}
-          sizes="(max-width: 768px) 90vw, 45vw"
-          className="object-cover select-none pointer-events-none"
-        />
-      )}
+      <Image
+        src={page.src}
+        alt={page.alt}
+        fill
+        priority={index < 2}
+        draggable={false}
+        sizes="(max-width: 768px) 90vw, 45vw"
+        className="object-cover select-none pointer-events-none"
+      />
     </div>
   );
 });
